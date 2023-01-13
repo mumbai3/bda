@@ -1,0 +1,51 @@
+Practical No. 8
+
+Aim: Write a Pig Script for solving counting problems
+
+Theory: Apache Pig is a high-level platform for creating programs that run on Apache Hadoop. The language for this platform is called Pig Latin. Pig can execute its Hadoop jobs in MapReduce, Apache Tez, or Apache Spark. Pig Latin abstracts the programming from the Java MapReduce idiom into a notation which makes MapReduce programming high level, similar to that of SQL for relational database management systems.
+
+Implementation:
+
+Pig release site(pig-0.17.0.tar.gz)
+
+1.	Extract the pig zip
+$ sudo tar –xf pig-0-17.0.tar.gx
+2.	Moving the file ( Rather than this below step u can move manually from downloads and rename it to pig and keep it in home if u want)
+$ mv pig-0-17-0 /home/hadoop/pig
+3.	Set the .bashrc file
+export PIG_HOME=/home/hadoop/pig
+export PATH=$PATH:$PIG_HOME/bin
+export PIG_CLASSPATH=$HADOOP_HOME/conf
+
+4.	Find the OpenJDK directory and copy the output in the .bashrc file: 
+( export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 )
+              $ readlink -f /usr/bin/javac
+5.	Verify installation
+$ pig -version
+6.	Run pig locally (do this step after editing the text file by entering content in it.)
+
+$ pig -x local
+
+
+
+# Pig script for word count problem
+1.	Create a text file in /home/Hadoop/textfile.txt path and provide content
+
+$ nano /home/hadoop/textfile.txt
+
+
+2.	Enter the following command in the terminal
+
+lines = LOAD ‘/home/hadoop/textfile.txt’ AS (line:chararray);
+
+words = FOREACH lines GENERATE FLATTEN(TOKENIZE(line)) as word;
+
+grouped = GROUP words BY word;
+
+
+wordcount = FOREACH grouped GENERATE group, COUNT(words);
+
+DUMP wordcount;
+
+
+ 

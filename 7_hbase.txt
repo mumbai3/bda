@@ -1,0 +1,67 @@
+Practical No.7
+Aim: Install HBase and use the HBase Data model Store and retrieve data.
+
+Theory: HBase is an open-source non-relational distributed database modeled after Google's Bigtable and written in Java. It is developed as part of Apache Software Foundation's Apache Hadoop project and runs on top of HDFS (Hadoop Distributed File System) or Alluxio, providing Bigtable-like capabilities for Hadoop. That is, it provides a fault-tolerant way of storing large quantities of sparse data (small amounts of information caught within a large collection of empty or unimportant data, such as finding the 50 largest items in a group of 2 billion records, or finding the non-zero items representing less than 0.1% of a huge collection).
+
+Implementation:
+#HBase installation
+(Rename the extracted hbase-2.4.15 folder in downloads to hbase and keep it in home and do below processes)
+1.	Go to the official site and download the most stable version of hbase 
+https://dlcdn.apache.org/hbase/2.4.15/hbase-2.4.15-bin.tar.gz
+2.	Extract the zip file and place it in Hadoop home directory
+
+3.	Find the OpenJDK directory and copy the output in the .bashrc file: 
+( export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 )
+         $ readlink -f /usr/bin/javac
+
+4.	Open hbase-env.sh in hbase/conf and assign the JAVA_HOME path
+$ sudo nano hbase/conf/hbase-env.sh
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+5.	Edit the .bashrc file
+                     $ nano ~/.bashrc
+export HBASE_HOME=/home/hbase
+export PATH=$PATH:$HBASE_HOME/bin
+
+6.	Read the edited .bashrc file to the running memory 
+  $ source ~/.bashrc      ((do for all the files ))
+7.	Add the following properties below the existing ones in the hbase/conf/hbase-site.xml file
+(sudo nano hbase/conf/hbase-site.xml)
+<property>
+<name>hbase.rootdir</name>
+<value>file:///home/hadoop/hbase</value>
+</property>
+<property>
+<name>hbase.zookeeper.property.dataDir</name>
+<value>/home/hadoop/hbase/zookeeper</value>
+</property>
+8.	Run hbase by typing
+$ start-hbase.sh
+$ hbase shell
+
+# Storing and retrieval of data 
+# Enter the following command in the hbase shell 
+(Look out for the inverted commas change them while writing the code)
+	create ‘emp’, ‘pri_data’, ‘pro_data’
+
+	put ‘emp’, ‘1’, ‘pri_data:name’, ‘Andy’
+
+	e=get_table(‘emp’)
+
+	e.put ‘1’, ‘pri_data:age’, ‘22’
+
+	e.put ‘1’, ‘pro_data:post’, ‘asst. manager’
+
+	e.put ‘1’, ‘pro_data:salary’, ‘40k’
+
+	e.put ‘2’, ‘pri_data:name’, ‘Harry’
+
+	e.put ‘2’, ‘pri_data:age’, ‘28’
+
+	e.put ‘2’, ‘pro_data:post’, ‘manager’
+
+	e.put ‘2’, ‘pro_data:salary’, ‘35k’
+
+	e.get ‘1’
+
+	e.get ‘2’

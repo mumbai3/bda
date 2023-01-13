@@ -1,0 +1,73 @@
+Practical No. 6
+Aim: Install Hive and use Hive Create and store structured databases.
+
+Theory: Apache Hive is a data warehouse software project built on top of Apache Hadoop for providing data query and analysis. Hive gives an SQL-like interface to query data stored in various databases and file systems that integrate with Hadoop. Traditional SQL queries must be implemented in the MapReduce Java API to execute SQL applications and queries over distributed data. Hive provides the necessary SQL abstraction to integrate SQL-like queries (HiveQL) into the underlying Java without the need to implement queries in the low-level Java API. Since most data warehousing applications work with SQL-based querying languages, Hive aids portability of SQL-based applications to Hadoop.
+
+Implementation:
+# Hive installation
+1.	Download hive-2.3.9 from the given link 
+apache-hive-2.3.9-bin.tar.gz  
+
+2.	Extract, rename and move the downloaded zip file to the appropriate folder 
+(Extract above zip & rename it as (hive) then move it in (home))
+(No need to make any folder to run on terminal)
+
+3.	Edit the .bashrc file
+
+$ nano ~/.bashrc
+
+export HIVE_HOME=/home/hadoop/hive
+export PATH=$PATH:$HIVE_HOME/bin
+4.	Edit the core-site.xml and add the following properties within the existing Hadoop configuration
+$ nano $HADOOP_HOME/etc/hadoop/core-site.xml
+
+<property>
+<name>hadoop.proxyuser.hadoop.groups</name>
+<value>*</value>
+</property>
+<property>
+<name>hadoop.proxyuser.hadoop.hosts</name>
+<value>*</value>
+</property>
+<property>
+<name>hadoop.proxyuser.server.hosts</name>
+<value>*</value>
+</property>
+<property>
+<name>hadoop.proxyuser.server.groups</name>
+<value>*</value>
+</property>
+5.	Make the hdfs directory. 
+(If error comes up below just type : (hadoop fs -rmdir –ignore-fail-on-non-empty /tmp )
+
+$ hadoop fs -mkdir /tmp
+$ hadoop fs -mkdir /tmp/user
+$ hadoop fs -mkdir /tmp/user/hive
+$ hadoop fs -mkdir /tmp/user/hive/warehouse
+
+6.	Give the permissions
+$ hadoop fs -chmod g+w /tmp
+$ hadoop fs -chmod g+w /tmp/user/hive/warehouse
+
+7.	Initialize the derby database
+$ schematool -dbType derby -initSchema
+8.	Start the hiveserver2
+$ hiveserver2
+9.	Open a new terminal and connect beeline with hive server
+$ beeline -n hadoop -u jdbc:hive2://localhost:10000
+
+# Create and store data ((Look out for the inverted commas change them while writing the code))
+1.	Create a new database
+$ create database test;
+
+2.	verify with:
+
+$ show databases;
+3.	Create a new table
+$ create table test.emp (id int, name string);
+4.	Insert a few tuples/records in the created table
+$ insert into test.emp VALUES(1, ‘Andy’);
+$ insert into test.emp VALUES(2, ‘Ramy’);
+$ insert into test.emp VALUES(3, ‘Youka’);
+5.	Display the table data
+$ select * from test.emp;
