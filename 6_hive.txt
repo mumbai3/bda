@@ -4,8 +4,9 @@ Theory: Apache Hive is a data warehouse software project built on top of Apache 
 
 Implementation:
 # Hive installation
-1.	Download hive-2.3.9 from the given link 
-apache-hive-2.3.9-bin.tar.gz  
+1.	Download hive-2.3.9 from the given link
+https://downloads.apache.org/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz
+apache-hive-3.1.2-bin.tar.gz  
 
 2.	Extract, rename and move the downloaded zip file to the appropriate folder 
 (Extract above zip & rename it as (hive) then move it in (home))
