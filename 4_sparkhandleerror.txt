@@ -1,5 +1,3 @@
-Practical No. 4
-Aim: Write a Spark code for the given application and handle error
 
 Theory: Scala offers different classes for functional error handling in Spark. These classes include but are not limited to Try/Success/Failure, Option/Some/None, Either/Left/Right. Depending on what you are trying to achieve you may want to choose a trio class based on the unique expected outcome of your code.
 
