@@ -1,8 +1,7 @@
-Practical No. 3
-Aim:  Download and install Spark. Create Graphical data and access the graphical data using Spark.
-Theory:  Apache Spark is an open-source unified analytics engine for large-scale data processing. Spark provides an interface for programming clusters with implicit data parallelism and fault tolerance.
-Implementation:
-# Scala installation (press y if opted)
+Download and install Spark. Create Graphical data and access the graphical data using Spark.
+Apache Spark is an open-source unified analytics engine for large-scale data processing. Spark provides an interface for programming clusters with implicit data parallelism and fault tolerance.
+
+# Scala installation
 	$ sudo apt install scala
 # check scala installation
 	$ scala -version
