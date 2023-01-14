@@ -1,7 +1,5 @@
 
 
-Theory: Spark streaming uses Spark Core's fast scheduling capability to perform streaming analytics. It ingests data in mini-batches and performs RDD transformations on those mini-batches of data. This design enables the same set of application code written for batch analytics to be used in streaming analytics, thus facilitating easy implementation of lambda architecture.
-
 Implementation:
 (Make a prac5 folder and do below processes)
 # sbt package creation 
