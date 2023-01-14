@@ -1,6 +1,4 @@
-Practical No. 8
-
-Aim: Write a Pig Script for solving counting problems
+Write a Pig Script for solving counting problems
 
 Theory: Apache Pig is a high-level platform for creating programs that run on Apache Hadoop. The language for this platform is called Pig Latin. Pig can execute its Hadoop jobs in MapReduce, Apache Tez, or Apache Spark. Pig Latin abstracts the programming from the Java MapReduce idiom into a notation which makes MapReduce programming high level, similar to that of SQL for relational database management systems.
 
