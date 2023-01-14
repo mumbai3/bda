@@ -66,8 +66,8 @@ $ show databases;
 3.	Create a new table
 $ create table test.emp (id int, name string);
 4.	Insert a few tuples/records in the created table
-$ insert into test.emp VALUES(1, ‘Andy’);
-$ insert into test.emp VALUES(2, ‘Ramy’);
-$ insert into test.emp VALUES(3, ‘Youka’);
+$ insert into test.emp VALUES(1, ‘newmumbai’);
+$ insert into test.emp VALUES(2, ‘mumbai’);
+$ insert into test.emp VALUES(3, ‘pune’);
 5.	Display the table data
 $ select * from test.emp;
